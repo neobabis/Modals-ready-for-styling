@@ -18,6 +18,7 @@ if (nb_modal_overlay) {
             button.addEventListener("click", () => {
                 let nb_modal = document.querySelector(button.dataset.nb_modal_target);
                 nb_open_modal(nb_modal);
+                nb_activate_button(nb_modal.id);
             });
         });
     }
@@ -25,6 +26,7 @@ if (nb_modal_overlay) {
     nb_modal_overlay.addEventListener("click", () => {
         let nb_modal = document.querySelector(".active[data-nb_modal]");
         nb_close_modal(nb_modal);
+        nb_deactivate_button(nb_modal.id);
     });
 
     if (nb_modals_close_buttons) {
@@ -32,6 +34,7 @@ if (nb_modal_overlay) {
             close_button.addEventListener("click", () => {
                 let nb_modal = close_button.closest("[data-nb_modal]");
                 nb_close_modal(nb_modal);
+                nb_deactivate_button(nb_modal.id);
             });
         });
     }
@@ -52,6 +55,18 @@ function nb_close_modal(modal) {
     modal.classList.remove("active");
     nb_modal_overlay.classList.remove("active");
     nb_enable_body_scrolling();
+}
+
+// Add .active class to button
+function nb_activate_button(button_id) {
+    if (button_id == null) return;
+    document.querySelector("[data-nb_modal_target='#" + button_id + "']").classList.add("active");
+}
+
+// Remove .active class from button
+function nb_deactivate_button(button_id) {
+    if (button_id == null) return;
+    document.querySelector("[data-nb_modal_target='#" + button_id + "']").classList.remove("active");
 }
 
 // Disable BODY - background scrolling
