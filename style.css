@@ -30,6 +30,11 @@ body {
     pointer-events: all;
 }
 
+[data-nb_modal_target].active {
+    /* Custom */
+    background-color: red;
+}
+
 [data-nb_modal] {
     opacity: 0;
     visibility: hidden;
