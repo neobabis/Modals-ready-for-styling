@@ -43,7 +43,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: fit-content;
+    // width: fit-content;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +52,7 @@ body {
 
     /* Custom */
     transition: opacity 0.4s ease;
+    max-width: 800px;
 }
 .active[data-nb_modal] {
     opacity: 1;
